@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Milestone, BookOpen, Code, BrainCircuit, Rocket } from "lucide-react";
+import { BookOpen, Code, BrainCircuit, Rocket, CheckCircle2 } from "lucide-react";
 
 const journeySteps = [
   {
@@ -9,7 +9,7 @@ const journeySteps = [
     sub: "Karachi University (B.A.)",
     desc: "The foundation phase. Learning to learn and discovering a passion for the digital world while completing my degree in 2024.",
     icon: BookOpen,
-    color: "bg-blue-500",
+    color: "from-blue-600 to-cyan-500",
     date: "Graduated 2024"
   },
   {
@@ -17,7 +17,7 @@ const journeySteps = [
     sub: "Governor Sindh IT Initiative",
     desc: "The grind begins. 1.5 years of intensive training in Next.js, TypeScript, and Full-Stack development. From zero code to building complex apps.",
     icon: Code,
-    color: "bg-purple-500",
+    color: "from-purple-600 to-indigo-500",
     date: "2024 - Present"
   },
   {
@@ -25,7 +25,7 @@ const journeySteps = [
     sub: "Agentic AI Mastery",
     desc: "Currently pushing boundaries by learning Python Agentic AI to build autonomous agents and intelligent automation.",
     icon: BrainCircuit,
-    color: "bg-pink-500",
+    color: "from-pink-600 to-rose-500",
     date: "Enrolled 2025"
   },
   {
@@ -33,59 +33,64 @@ const journeySteps = [
     sub: "Software Engineer / AI Dev",
     desc: "Ready to contribute to real-world projects and solve complex problems in a collaborative environment.",
     icon: Rocket,
-    color: "bg-orange-500",
+    color: "from-orange-600 to-amber-500",
     date: "The Goal"
   }
 ];
 
 export function Journey() {
   return (
-    <section id="journey" className="section-padding relative overflow-hidden">
-      {/* Decorative vertical line */}
-      <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-purple-500/30 to-transparent hidden md:block" />
-
+    <section id="journey" className="section-padding relative overflow-hidden bg-[#020617]/30">
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-20">
-          <motion.span 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="text-purple-500 font-bold tracking-[0.3em] uppercase text-sm mb-4 block"
+        <div className="text-center mb-24">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border-purple-500/20 text-purple-400 text-xs font-bold uppercase tracking-widest mb-6"
           >
-            My Struggle & Growth
-          </motion.span>
+            <CheckCircle2 size={14} /> My Evolution
+          </motion.div>
           <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter">
             Zero to <span className="gradient-text">AI</span>.
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">
-            A visual roadmap of my evolution from a student to a modern web and AI-driven developer.
+            A balanced roadmap of my professional struggle and technical growth.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 relative">
-          {journeySteps.map((step, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`relative p-8 rounded-[2.5rem] glass border-white/5 hover:border-purple-500/20 transition-all ${
-                index % 2 === 0 ? "md:text-right" : "md:mt-24"
-              }`}
-            >
-              {/* Connector Dot */}
-              <div className={`absolute top-1/2 ${index % 2 === 0 ? "-right-3" : "-left-3"} w-6 h-6 rounded-full bg-[#020617] border-4 border-purple-500 z-20 hidden md:block`} />
+        <div className="relative">
+          {/* Vertical Center Line */}
+          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/10 to-transparent hidden md:block -translate-x-1/2" />
 
-              <div className={`w-14 h-14 rounded-2xl ${step.color} flex items-center justify-center text-white mb-6 ${index % 2 === 0 ? "md:ml-auto" : ""}`}>
-                <step.icon size={28} />
+          <div className="space-y-12 md:space-y-0">
+            {journeySteps.map((step, index) => (
+              <div key={index} className={`flex flex-col md:flex-row items-center justify-between w-full md:mb-12 ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}>
+                
+                {/* Content Card */}
+                <motion.div 
+                  initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="w-full md:w-[45%] p-8 rounded-[2rem] glass border-white/5 hover:border-purple-500/30 transition-all group relative"
+                >
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${step.color} flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform`}>
+                    <step.icon size={24} />
+                  </div>
+                  <span className="text-[10px] font-black text-purple-500 uppercase tracking-[0.2em] mb-2 block">{step.date}</span>
+                  <h3 className="text-2xl font-bold mb-2 group-hover:text-purple-400 transition-colors">{step.title}</h3>
+                  <p className="text-purple-400 font-bold mb-4 text-sm">{step.sub}</p>
+                  <p className="text-gray-500 text-sm leading-relaxed italic">{step.desc}</p>
+                </motion.div>
+
+                {/* Center Dot */}
+                <div className="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-purple-500 border-4 border-[#020617] z-20 hidden md:block shadow-[0_0_20px_rgba(168,85,247,0.5)]" />
+
+                {/* Spacer for the other side */}
+                <div className="hidden md:block w-[45%]" />
               </div>
-              
-              <span className="text-xs font-black text-purple-500 uppercase tracking-widest mb-2 block">{step.date}</span>
-              <h3 className="text-3xl font-bold mb-3">{step.title}</h3>
-              <p className="text-purple-400 font-bold mb-4">{step.sub}</p>
-              <p className="text-gray-500 leading-relaxed italic">{step.desc}</p>
-            </motion.div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
