@@ -1,5 +1,3 @@
-"use client";
-
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { Menu, X, Rocket } from "lucide-react";
@@ -8,6 +6,7 @@ import { ThemeToggle } from "./ThemeToggle";
 const navLinks = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
+  { name: "Journey", href: "#journey" },
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
   { name: "Education", href: "#education" },
@@ -36,7 +35,6 @@ export function Navbar() {
         scrolled ? "py-4" : "py-6"
       }`}
     >
-      {/* Scroll Progress Bar */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 via-blue-500 to-pink-500 origin-left z-[60]"
         style={{ scaleX }}
@@ -58,7 +56,6 @@ export function Navbar() {
             <span>SN<span className="text-purple-500">.</span></span>
           </motion.div>
 
-          {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-1">
             {navLinks.map((link) => (
               <a
@@ -74,7 +71,6 @@ export function Navbar() {
             </div>
           </div>
 
-          {/* Mobile Nav Toggle */}
           <div className="md:hidden flex items-center space-x-4">
             <ThemeToggle />
             <button 
@@ -87,7 +83,6 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
