@@ -13,6 +13,7 @@ import { PrintCV } from "@/components/PrintCV";
 export default function Home() {
   return (
     <>
+      {/* Website UI - Hidden during printing */}
       <div className="no-print">
         <Navbar />
         
@@ -22,6 +23,7 @@ export default function Home() {
           {/* Professional Summary */}
           <section id="about" className="section-padding bg-[#020617] relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent" />
+            
             <div className="max-w-4xl mx-auto relative z-10">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -37,13 +39,13 @@ export default function Home() {
                 <p className="text-xl md:text-2xl text-gray-400 leading-relaxed font-light italic">
                   "Enthusiastic and motivated graduate seeking a software development internship or junior developer role. 
                   Skilled in HTML, CSS, JavaScript, Python, and full-stack web development. Currently learning Agentic AI 
-                  in Python to build intelligent autonomous agents."
+                  in Python to build intelligent autonomous agents. Passionate about creating efficient web and AI-driven 
+                  solutions and eager to contribute to real-world projects in a collaborative software house environment."
                 </p>
               </motion.div>
             </div>
           </section>
 
-          <Journey />
           <Skills />
           <Projects />
           <Education />
@@ -78,11 +80,8 @@ export default function Home() {
         </footer>
       </div>
 
+      {/* Professional CV Template - Visible ONLY during printing */}
       <PrintCV />
-    </>
-  );
-}
-tCV />
     </>
   );
 }
