@@ -9,6 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://shama-resume.surge.sh"), // Aap isey baad mein change kar sakte hain
   title: "Shama Naz | Web Developer & AI Enthusiast",
   description: "Portfolio of Shama Naz - A passionate Web Developer and AI enthusiast from Karachi, Pakistan, building modern web solutions and intelligent agents.",
   keywords: ["Shama Naz", "Web Developer", "Next.js Portfolio", "AI Enthusiast", "Karachi Developer", "Pakistan Software Engineer"],
@@ -37,6 +38,9 @@ export const metadata: Metadata = {
   },
 };
 
+import { CustomCursor } from "@/components/CustomCursor";
+import { AnimatedBackground } from "@/components/AnimatedBackground";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -44,13 +48,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
-      <body className={`${inter.variable} font-sans selection:bg-purple-500/30`}>
+      <body className={`${inter.variable} font-sans selection:bg-purple-500/30 overflow-x-hidden`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
+          <CustomCursor />
+          <AnimatedBackground />
           {children}
         </ThemeProvider>
       </body>

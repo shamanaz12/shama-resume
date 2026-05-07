@@ -46,22 +46,22 @@ export function Hero() {
 
           <div className="overflow-hidden mb-6">
             <motion.h1
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
+              initial={{ y: "100%", opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="text-6xl md:text-9xl font-black tracking-tighter leading-none"
+              className="text-7xl md:text-[10rem] font-black tracking-tighter leading-[0.85] mb-4"
             >
               Shama <span className="gradient-text">Naz</span>
             </motion.h1>
           </div>
 
           <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.8 }}
-            className="text-2xl md:text-4xl font-light text-gray-400 mb-12 tracking-tight"
+            className="text-2xl md:text-5xl font-light text-gray-400 mb-14 tracking-tight"
           >
-            Web Developer <span className="text-purple-500">&</span> AI Enthusiast
+            Web Developer <span className="text-purple-500 font-serif italic">&</span> AI Enthusiast
           </motion.p>
 
           <motion.div
@@ -73,19 +73,30 @@ export function Hero() {
             <Magnetic>
               <button 
                 onClick={() => window.print()}
-                className="btn-primary flex items-center gap-3 group relative overflow-hidden"
+                className="px-10 py-5 rounded-2xl bg-white text-black font-black uppercase tracking-widest text-xs hover:bg-purple-500 hover:text-white transition-all duration-500 flex items-center gap-3 shadow-[0_0_30px_rgba(255,255,255,0.1)] hover:shadow-purple-500/40"
               >
-                <Download size={20} /> Download CV
+                <Download size={18} /> Download CV
               </button>
             </Magnetic>
             <Magnetic>
-              <a href="#projects" className="btn-outline flex items-center gap-3 group">
-                View Projects <ChevronRight size={20} className="group-hover:translate-x-2 transition-transform" />
+              <a href="#projects" className="px-10 py-5 rounded-2xl bg-white/5 border border-white/10 text-white font-black uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all duration-500 flex items-center gap-3">
+                View Projects <ChevronRight size={18} className="group-hover:translate-x-2 transition-transform" />
               </a>
             </Magnetic>
           </motion.div>
         </div>
       </div>
+
+      {/* Scroll Indicator */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5, duration: 1 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 no-print"
+      >
+        <span className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-500">Scroll</span>
+        <div className="w-px h-20 bg-gradient-to-b from-purple-500 to-transparent" />
+      </motion.div>
     </section>
   );
 }
